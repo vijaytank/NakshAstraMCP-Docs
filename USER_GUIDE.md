@@ -97,7 +97,7 @@ NakshAstraMCP automatically adapts its engine capabilities based on your availab
 
 ## 🩺 Surgical Intelligence Tools
 
-NakshAstraMCP v3.8.0 introduces high-precision tools designed for minimal token usage and maximum accuracy.
+NakshAstraMCP v3.10.1 introduces high-precision tools designed for minimal token usage and maximum accuracy.
 
 - **`read_file`**: Read precise line ranges of a file. AI agents use this to avoid dumping entire large files.
 - **`find_symbol`**: Locate exactly where a class, function, or method is defined across all registered workspaces.
