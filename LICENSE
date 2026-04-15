@@ -1,0 +1,26 @@
+# NakshAstraMCP - Proprietary / Personal Use License
+
+Copyright (c) 2026 Vijay Tank. All Rights Reserved.
+
+**IMPORTANT: READ CAREFULLY BEFORE ACCESSING OR USING THE SOFTWARE.**
+
+This Software ("NakshAstraMCP") is provided for **personal and non-commercial use only**. By using this Software, you agree to be bound by the following terms:
+
+### 1. OWNERSHIP
+The Software, including its source code, documentation, and design, is the exclusive property of Vijay Tank ("The Author"). All rights not expressly granted are reserved.
+
+### 2. PERMITTED USAGE
+- Use the provided binaries or compiled distribution for personal productivity and development.
+- Configure the Software via the provided configuration files for your own local codebase context.
+
+### 3. RESTRICTIONS
+- **No Redistribution**: You may not redistribute, sell, or publicly share the source code or the product without express written permission from The Author.
+- **No Derivative Works**: You may not create derivative versions of the Software or use its proprietary algorithms (like the PageRank-scored symbol graph) in other products.
+- **Source Privacy**: This Software is intended to be used as a "product." Accessing the source code does not grant you the right to republish or share it.
+
+### 4. PRIVACY POLICY
+- **Local First**: NakshAstraMCP operates entirely on your local machine. No code snippets, file paths, or structural data are uploaded to external servers by NakshAstraMCP itself.
+- **Telemetry**: This Software contains zero telemetry or tracking components. Your workspace remains entirely private.
+
+### 5. NO WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE AUTHOR SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THIS SOFTWARE.
