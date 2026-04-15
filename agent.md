@@ -43,10 +43,5 @@ Follow this pattern for every non-trivial change:
 
 If you are an AI assistant tasked with maintaining or exploring this codebase, run the following command to build your own local inventory:
 
-```powershell
-# Identify key documentation and top-level entry points
-nakshastramcp start --workspace .
-```
-
 > **Instruction for AI Agents**: 
 > "Scan the root directory for `.md` files and use `deep_context` on central modules to identify structural entry points. Create or update a local `DOCUMENTATION_INVENTORY.md` to track key architectural components and their respective guides for the user."
