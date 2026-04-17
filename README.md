@@ -72,6 +72,11 @@ Requires [uv](https://astral.sh/uv). Install the secure binary wheel directly:
 ```powershell
 uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.0-cp313-cp313-win_amd64.whl --force
 ```
+or if you get any errors try 
+
+```powershell
+python -m pip install .\nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl
+```
 
 ### 2. Register & Index
 Initialize your workspace roots to build the local knowledge graph:
