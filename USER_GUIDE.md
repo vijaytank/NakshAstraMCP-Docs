@@ -20,7 +20,7 @@
 Ensure [uv](https://astral.sh/uv) is installed, then install the universal wheel:
 ```powershell
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-uv tool install nakshastramcp-3.7.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl --force
 ```
 
 ### 2. Configuration for AI Clients
@@ -99,9 +99,22 @@ NakshAstraMCP automatically adapts its engine capabilities based on your availab
 
 NakshAstraMCP v3.10.1 introduces high-precision tools designed for minimal token usage and maximum accuracy.
 
+### `search_codebase`
+Performs a hybrid search (Tantivy BM25 + FlashRank Reranking) across your registered repositories.
+- When `workspace_path` is omitted, **all registered workspaces** are searched and results are merged by score.
+- **Usage**: "Find where the authentication logic is handled."
+
+### `deep_context`
+Analyzes cross-file relationships and provides structural snippets with 2-hop graph expansion.
+- Supports **multi-workspace** search — results are merged and sorted by relevance score.
+- **Usage**: "Explain how the DataManager class is initialized."
+
+### Precision Retrieval Tools
+
 - **`read_file`**: Read precise line ranges of a file. AI agents use this to avoid dumping entire large files.
 - **`find_symbol`**: Locate exactly where a class, function, or method is defined across all registered workspaces.
 - **`find_references`**: Trace every usage of a symbol to understand the impact of potential changes.
+- **`server_status`**: Returns internal health metrics, memory usage, and indexing status.
 
 ---
 
@@ -169,6 +182,17 @@ NakshAstraMCP supports [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
     nakshastramcp provision --lang go --lib ./tree_sitter_go.dll
     ```
 3.  **Verify**: The server will validate the binary and copy it to its internal store. No restart is required for the indexing engine to pick up the new file types.
+
+---
+
+## ⚙️ Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `NAKSH_TRANSPORT` | `streamable-http` | Override transport mode (`stdio` or `streamable-http`) |
+| `NAKSH_MEM_THRESHOLD_MB` | `1024` | Memory guard threshold in MB |
+| `NAKSH_SNIPPET_LIMIT` | `10` | Max results per search query |
+| `NAKSH_LOG_LEVEL` | `INFO` | Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |
 
 ---
 

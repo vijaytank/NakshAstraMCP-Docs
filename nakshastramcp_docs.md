@@ -5,7 +5,7 @@ Repository: https://github.com/vijaytank/NakshAstraMCP-Docs
 ---
 
 ## Purpose
-NakshAstraMCP-Docs is an MCP server designed to give AI coding agents precise, low-latency access to local code context using AST-aware symbol graphs, semantic reranking, and graph-based relevance scoring.
+NakshAstraMCP is an MCP server designed to give AI coding agents precise, low-latency access to local code context using AST-aware symbol graphs, semantic reranking, and graph-based relevance scoring.
 
 ---
 
@@ -21,7 +21,7 @@ Preferred behavior:
 - **Locate Precisely**: Use `find_symbol` to identify the exact definition of classes, functions, or methods across all registered workspaces.
 - **Trace Impact**: Use `find_references` to audit the call sites and impact radius before proposing any code changes.
 - **Surgical Inspection**: Use `read_file` with precise line ranges to retrieve only the relevant code sections. Never dump a whole file if a specific range can answer the question.
-- **Discovery**: Use `deep_context` for broad architectural discovery and identifying connected symbols through 1-hop graph expansion.
+- **Discovery**: Use `deep_context` for broad architectural discovery and identifying connected symbols through 2-hop graph expansion.
 - **Connect Symbols**: Prioritize files/symbols with stronger graph relevance and reference centrality when selecting candidate implementation sites.
 - **Minimal Context**: Retrieve only the smallest set of highly relevant code symbols needed to solve the task, reducing overall token usage.
 - **Tracing**: For bug fixing, identify the symbol origin and execution path through the MCP tools before suggesting a patch.
@@ -39,7 +39,7 @@ Fallback rule:
 
 ## Short Version
 ```md
-Use NakshAstraMCP-Docs as the default source of truth for local code context. Always query it before generic search. Prefer symbol-level, AST-aware, semantically reranked context retrieval. Minimize token usage by fetching only the most relevant definitions, references, and dependencies needed for the current task.
+Use NakshAstraMCP as the default source of truth for local code context. Always query it before generic search. Prefer symbol-level, AST-aware, semantically reranked context retrieval. Minimize token usage by fetching only the most relevant definitions, references, and dependencies needed for the current task.
 ```
 
 ---
