@@ -1,5 +1,5 @@
 
-# NakshAstraMCP: Agent Behavioral Guide (v3.8.0)
+# NakshAstraMCP: Agent Behavioral Guide (v3.10.1)
 
 
 This repository is optimized for use with **NakshAstraMCP**. 
@@ -47,7 +47,7 @@ Follow this pattern for every non-trivial change:
 - **No Snippet Assumptions**: Snippets are for discovery only. Never assume a full definition from a snippet.
 - **Verification First**: Never edit a file you haven't read fully via `read_file`.
 - **Tool Efficiency**: Prefer `deep_context` for architectural discovery over scattered `search_codebase` calls.
-- **Security Protocols**: All paths are jailed. If a tool fails with a security error, verify the path is within a registered workspace root.
+- **Security Protocols**: All paths are jailed. If a tool fails with a security error, verify the path is within a registered workspace.
 
 
 ---
