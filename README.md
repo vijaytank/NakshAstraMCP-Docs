@@ -36,6 +36,14 @@ Quickly navigate to detailed guides:
 - **Index/Search Latency**: **~0.68ms p95** (Ultra-low latency on 10,000-file repos)
 - **Idle Memory**: **< 150 MB RAM**
 - **Language Support**: Deep AST integration for **Python, JavaScript, TypeScript, Java, and Kotlin**.
+- **ROI Benchmark**: **75% Cost Reduction** vs. manual LLM context retrieval.
+
+#### 📊 Performance vs. Manual Analysis
+| Metric | With NakshAstraMCP | Without MCP (Manual) | **Efficiency Win** |
+| :--- | :--- | :--- | :--- |
+| **Context Fidelity** | **High**: specific symbols & graph neighbors | **Low**: Generic architectural layers | **Deep Context** |
+| **API Cost** | **$0.09** | **$0.37** | **75% Cheaper** |
+| **Wall Clock Time** | **1m 21s** | **2m 5s** | **35% Faster** |
 
 <br>
 
@@ -48,6 +56,8 @@ Quickly navigate to detailed guides:
 - 🔍 **Hybrid Multi-Repo Search** — Indexed search across all your projects simultaneously.
 - 🧠 **Semantic Reranking** — AI-powered results prioritized by conceptual relevance using FlashRank.
 - 🌳 **AST-Aware Analysis** — Understands code structure (classes, functions, imports) natively.
+- 🤖 **Automated Agent Orchestration** — Self-provisioning `agent.md` instructions with non-destructive backup.
+- 🗺️ **Knowledge Mapping** — Automated architectural reports (`NAKSHASTRA_REPORT.md`) and community detection.
 - 🩺 **Surgical Intelligence** — High-precision tools (`read_file`, `find_symbol`, `find_references`) for localized context retrieval.
 - 🛡️ **Administrative Control** — Full CLI control over server lifecycle (`stop`, `restart`, `logs`).
 - 👁️ **Real-Time Watcher** — Changes are indexed instantly with mass-update protection.
@@ -67,15 +77,15 @@ Quickly navigate to detailed guides:
 ### 1. Unified Installation
 Requires [uv](https://astral.sh/uv). Install the secure binary wheel directly:
 
-**📥 [Download v3.10.1 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.11.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl)**
 
 ```powershell
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl --force
 ```
 or if you get any errors try 
 
 ```powershell
-python -m pip install .\nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl
+python -m pip install .\nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl
 ```
 
 ### 2. Register & Index
@@ -88,6 +98,7 @@ nakshastramcp start --workspace C:\path\to\your\project
 ```powershell
 nakshastramcp status  # Check indexing progress
 nakshastramcp doctor  # Perform full environment audit
+nakshastramcp report . # Generate architectural knowledge map
 ```
 
 ---

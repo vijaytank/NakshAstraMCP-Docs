@@ -20,7 +20,7 @@
 Ensure [uv](https://astral.sh/uv) is installed, then install the universal wheel:
 ```powershell
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl --force
 ```
 
 ### 2. Configuration for AI Clients
@@ -95,9 +95,18 @@ NakshAstraMCP automatically adapts its engine capabilities based on your availab
 
 ---
 
+### 🤖 Automated Agent Orchestration
+Starting with v3.11.0, NakshAstraMCP automatically manages agent behavior within your workspace.
+
+- **Zero-Config Onboarding**: When you register a workspace via `nakshastramcp start --workspace .`, the server automatically provisions a project-specific `agent.md` file.
+- **AI Guidance**: This file instructs LLM agents to prioritize NakshAstraMCP tools over generic search methods, ensuring consistent performance and lower API costs.
+- **Safety First**: If you already have an `agent.md` file, NakshAstraMCP will safely rename it to `agent_backup.md` before provisioning the optimized version.
+
+---
+
 ## 🩺 Surgical Intelligence Tools
 
-NakshAstraMCP v3.10.1 introduces high-precision tools designed for minimal token usage and maximum accuracy.
+NakshAstraMCP v3.11.0 introduces high-precision tools designed for minimal token usage and maximum accuracy.
 
 ### `search_codebase`
 Performs a hybrid search (Tantivy BM25 + FlashRank Reranking) across your registered repositories.
@@ -109,12 +118,43 @@ Analyzes cross-file relationships and provides structural snippets with 2-hop gr
 - Supports **multi-workspace** search — results are merged and sorted by relevance score.
 - **Usage**: "Explain how the DataManager class is initialized."
 
+### `generate_report`
+Manually triggers a full architectural analysis of your workspace.
+- Generates `NAKSHASTRA_REPORT.md` and `graph.json` in the `nakshastra-out/` directory.
+- **Usage**: "Refresh the architectural map for this project."
+
 ### Precision Retrieval Tools
 
 - **`read_file`**: Read precise line ranges of a file. AI agents use this to avoid dumping entire large files.
 - **`find_symbol`**: Locate exactly where a class, function, or method is defined across all registered workspaces.
 - **`find_references`**: Trace every usage of a symbol to understand the impact of potential changes.
+- **`generate_report`**: Produce a macro-level architectural report of the workspace.
 - **`server_status`**: Returns internal health metrics, memory usage, and indexing status.
+
+---
+
+---
+
+## 🗺️ Knowledge Mapping (Architectural Intelligence)
+
+NakshAstraMCP v3.11.0 introduces **Knowledge Mapping**, a deterministic engine that provides a macro-level view of your codebase.
+
+### 📊 Automated Reports
+Every full scan automatically generates a `nakshastra-out/` directory in your workspace root containing:
+- **`NAKSHASTRA_REPORT.md`**: A human-readable summary of the codebase.
+    - **God Nodes**: Identification of high-impact central hubs (PageRank).
+    - **Module Communities**: Automated grouping of related files into functional clusters (Louvain).
+- **`graph.json`**: A portable export of the code-relationship graph for use in external visualization tools.
+
+### 🧠 Community Detection
+The engine analyzes the relationships between files (imports, calls, and documentation links) to identify "communities." These clusters help AI agents understand how the project is logically organized, even in large or monolith repositories.
+
+### 🛠️ Manual Report Generation
+You can manually trigger a report refresh at any time via the CLI:
+```powershell
+nakshastramcp report .
+```
+This is useful after major refactors or when you've added new documentation that you want to be included in the knowledge graph.
 
 ---
 
