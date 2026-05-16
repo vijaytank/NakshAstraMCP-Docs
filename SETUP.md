@@ -21,7 +21,7 @@
 ### 1. Install via uv (Recommended)
 NakshAstraMCP is distributed as a **Secure Binary Wheel** for maximum privacy and performance.
 
-**📥 [Download v3.10.1 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.11.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl)**
 
 We recommend using [uv](https://astral.sh/uv) for installation:
 
@@ -30,7 +30,7 @@ We recommend using [uv](https://astral.sh/uv) for installation:
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 # Install NakshAstraMCP
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.10.1-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl --force
 ```
 
 ### 2. Prerequisite Check

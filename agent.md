@@ -1,5 +1,5 @@
 
-# NakshAstraMCP: Agent Behavioral Guide (v3.10.1)
+# NakshAstraMCP: Agent Behavioral Guide (v3.11.0)
 
 
 This repository is optimized for use with **NakshAstraMCP**. 
@@ -19,6 +19,7 @@ This repository is optimized for use with **NakshAstraMCP**.
 | **`find_symbol`** | **Surgical** | Precise lookup for classes/functions by name. Use for "Go to Definition." |
 | **`read_file`** | **Verification**| **MANDATORY** before any edit. Read the full file content to avoid assumptions. |
 | **`find_references`**| **Audit** | Trace usages (Blast-radius) before changing shared or critical functions. |
+| **`generate_report`** | **Map** | Triggers/Refreshes the architectural map. Check `nakshastra-out/NAKSHASTRA_REPORT.md` for macro-context. |
 | **`server_status`** | **Diagnostic**| Use only if indexing or memory issues are suspected. |
 
 
@@ -31,7 +32,8 @@ This repository is optimized for use with **NakshAstraMCP**.
 Follow this pattern for every non-trivial change:
 
 
-1. **`deep_context`**: Discover relevant files and architectural neighbors.
+1. **`generate_report`**: (Optional) Refresh the map. Check `nakshastra-out/NAKSHASTRA_REPORT.md` for the macro-view.
+2. **`deep_context`**: Discover relevant files and architectural neighbors.
 2. **`find_symbol`**: Locate the exact definition (line ranges) for the target logic.
 3. **`read_file`**: **MUST** read the full file content before proposing or drafting code.
 4. **`find_references`**: Audit call sites to ensure no regressions are introduced.
