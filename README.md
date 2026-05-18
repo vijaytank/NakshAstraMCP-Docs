@@ -55,9 +55,10 @@ Quickly navigate to detailed guides:
 ### ✨ Key Features
 - 🔍 **Hybrid Multi-Repo Search** — Indexed search across all your projects simultaneously.
 - 🧠 **Semantic Reranking** — AI-powered results prioritized by conceptual relevance using FlashRank.
-- 🌳 **AST-Aware Analysis** — Understands code structure (classes, functions, imports) natively.
+- 🌳 **AST Call Graph & Lexical Call Resolution** — Natively extracts classes and functions, building a semantic call-graph using scope-constrained lexical boundary checks.
 - 🤖 **Automated Agent Orchestration** — Self-provisioning `agent.md` instructions with non-destructive backup.
-- 🗺️ **Knowledge Mapping** — Automated architectural reports (`NAKSHASTRA_REPORT.md`) and community detection.
+- 🗺️ **High-Fidelity Knowledge Mapping** — Automated reports featuring distinct high-impact file and symbol matrices with clickable, precise line-highlight links (e.g. `file:///#Lstart-Lend`) for instant IDE navigation.
+- 📦 **Clean Louvain Clusters** — Groups tightly-coupled files into functional modules named by dominant parent directories, excluding external import stubs for pure context.
 - 🩺 **Surgical Intelligence** — High-precision tools (`read_file`, `find_symbol`, `find_references`) for localized context retrieval.
 - 🛡️ **Administrative Control** — Full CLI control over server lifecycle (`stop`, `restart`, `logs`).
 - 👁️ **Real-Time Watcher** — Changes are indexed instantly with mass-update protection.

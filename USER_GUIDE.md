@@ -137,24 +137,28 @@ Manually triggers a full architectural analysis of your workspace.
 
 ## 🗺️ Knowledge Mapping (Architectural Intelligence)
 
-NakshAstraMCP v3.11.0 introduces **Knowledge Mapping**, a deterministic engine that provides a macro-level view of your codebase.
+NakshAstraMCP v3.12.0 features a high-fidelity **Knowledge Mapping** engine that parses code relationships and visualizes architectural dependencies.
 
 ### 📊 Automated Reports
 Every full scan automatically generates a `nakshastra-out/` directory in your workspace root containing:
-- **`NAKSHASTRA_REPORT.md`**: A human-readable summary of the codebase.
-    - **God Nodes**: Identification of high-impact central hubs (PageRank).
-    - **Module Communities**: Automated grouping of related files into functional clusters (Louvain).
+- **`NAKSHASTRA_REPORT.md`**: A human-readable architectural digest structured for maximum readability:
+    - **High-Impact Files**: Physical codebase files identified as central hubs via PageRank.
+    - **High-Impact Symbols**: Key logical abstractions (classes, functions, methods, properties) displaying clickable line-range hyperlinks (e.g. `file:///absolute/path/to/file#Lstart-Lend`) for instant IDE navigation.
+    - **Module Communities**: Tightly-coupled functional clusters grouped using Louvain community detection.
 - **`graph.json`**: A portable export of the code-relationship graph for use in external visualization tools.
 
-### 🧠 Community Detection
-The engine analyzes the relationships between files (imports, calls, and documentation links) to identify "communities." These clusters help AI agents understand how the project is logically organized, even in large or monolith repositories.
+### 🧠 AST Call Graph & Community Detection
+The engine analyzes package imports, documentation links, and granular code symbol calls to construct an AST-level relationship map:
+- **Semantic Calls**: Traces exact class and function interactions between files and internal helper methods.
+- **Clean Louvain Clusters**: Clustering is computed exclusively over workspace source files, filtering out external package stubs to keep analysis pristine.
+- **Directory Frequency Naming**: Module communities are automatically named by their dominant parent directory (e.g., `ui`, `data`, `network`), offering immediate conceptual clarity.
 
 ### 🛠️ Manual Report Generation
 You can manually trigger a report refresh at any time via the CLI:
 ```powershell
 nakshastramcp report .
 ```
-This is useful after major refactors or when you've added new documentation that you want to be included in the knowledge graph.
+This is useful after major refactors or when you've added new source files that you want to integrate into the architectural map.
 
 ---
 
