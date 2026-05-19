@@ -19,7 +19,7 @@ NakshAstraMCP provides AI agents (Claude, Cursor, Antigravity, etc.) with deep, 
 ### 🗺 Documentation Hub
 Quickly navigate to detailed guides:
 
-| 🚀 [Setup Guide](SETUP.md) | 📖 [User Guide](USER_GUIDE.md) | 🤖 [Agent Guide](agent.md) |
+| 🚀 [Setup Guide](SETUP.md) | 📖 [User Guide](USER_GUIDE.md) | 🤖 [Agent Guide](AGENTS.md) |
 | :---: | :---: | :---: |
 | *Install & Configure* | *Advanced Usage & Tips* | *Behavioral Guide for AI* |
 
@@ -56,7 +56,7 @@ Quickly navigate to detailed guides:
 - 🔍 **Hybrid Multi-Repo Search** — Indexed search across all your projects simultaneously.
 - 🧠 **Semantic Reranking** — AI-powered results prioritized by conceptual relevance using FlashRank.
 - 🌳 **AST Call Graph & Lexical Call Resolution** — Natively extracts classes and functions, building a semantic call-graph using scope-constrained lexical boundary checks.
-- 🤖 **Automated Agent Orchestration** — Self-provisioning `agent.md` instructions with non-destructive backup.
+- 🤖 **Automated Agent Orchestration** — Self-provisioning `AGENTS.md` instructions with non-destructive backup.
 - 🗺️ **High-Fidelity Knowledge Mapping** — Automated reports featuring distinct high-impact file and symbol matrices with clickable, precise line-highlight links (e.g. `file:///#Lstart-Lend`) for instant IDE navigation.
 - 📦 **Clean Louvain Clusters** — Groups tightly-coupled files into functional modules named by dominant parent directories, excluding external import stubs for pure context.
 - 🩺 **Surgical Intelligence** — High-precision tools (`read_file`, `find_symbol`, `find_references`) for localized context retrieval.
@@ -78,15 +78,15 @@ Quickly navigate to detailed guides:
 ### 1. Unified Installation
 Requires [uv](https://astral.sh/uv). Install the secure binary wheel directly:
 
-**📥 [Download v3.12.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP/releases/download/v3.12.0/nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.13.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP/releases/download/v3.13.0/nakshastramcp-3.13.0-cp313-cp313-win_amd64.whl)**
 
 ```powershell
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.13.0-cp313-cp313-win_amd64.whl --force
 ```
 or if you get any errors try 
 
 ```powershell
-python -m pip install .\nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl
+python -m pip install .\nakshastramcp-3.13.0-cp313-cp313-win_amd64.whl
 ```
 
 ### 2. Register & Index

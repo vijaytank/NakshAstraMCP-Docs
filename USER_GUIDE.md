@@ -20,7 +20,7 @@
 Ensure [uv](https://astral.sh/uv) is installed, then install the universal wheel:
 ```powershell
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.13.0-cp313-cp313-win_amd64.whl --force
 ```
 
 ### 2. Configuration for AI Clients
@@ -96,17 +96,17 @@ NakshAstraMCP automatically adapts its engine capabilities based on your availab
 ---
 
 ### 🤖 Automated Agent Orchestration
-Starting with v3.11.0, NakshAstraMCP automatically manages agent behavior within your workspace.
+Starting with v3.13.0, NakshAstraMCP automatically manages agent behavior within your workspace.
 
-- **Zero-Config Onboarding**: When you register a workspace via `nakshastramcp start --workspace .`, the server automatically provisions a project-specific `agent.md` file.
+- **Zero-Config Onboarding**: When you register a workspace via `nakshastramcp start --workspace .`, the server automatically provisions a project-specific `AGENTS.md` file.
 - **AI Guidance**: This file instructs LLM agents to prioritize NakshAstraMCP tools over generic search methods, ensuring consistent performance and lower API costs.
-- **Safety First**: If you already have an `agent.md` file, NakshAstraMCP will safely rename it to `agent_backup.md` before provisioning the optimized version.
+- **Safety First**: If you already have an `AGENTS.md` file, NakshAstraMCP will safely rename it to `AGENTS_Backup.md` before provisioning the optimized version.
 
 ---
 
 ## 🩺 Surgical Intelligence Tools
 
-NakshAstraMCP v3.11.0 introduces high-precision tools designed for minimal token usage and maximum accuracy.
+NakshAstraMCP v3.13.0 introduces high-precision tools designed for minimal token usage and maximum accuracy.
 
 ### `search_codebase`
 Performs a hybrid search (Tantivy BM25 + FlashRank Reranking) across your registered repositories.
@@ -137,7 +137,7 @@ Manually triggers a full architectural analysis of your workspace.
 
 ## 🗺️ Knowledge Mapping (Architectural Intelligence)
 
-NakshAstraMCP v3.12.0 features a high-fidelity **Knowledge Mapping** engine that parses code relationships and visualizes architectural dependencies.
+NakshAstraMCP v3.13.0 features a high-fidelity **Knowledge Mapping** engine that parses code relationships and visualizes architectural dependencies.
 
 ### 📊 Automated Reports
 Every full scan automatically generates a `nakshastra-out/` directory in your workspace root containing:
