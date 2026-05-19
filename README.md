@@ -78,15 +78,15 @@ Quickly navigate to detailed guides:
 ### 1. Unified Installation
 Requires [uv](https://astral.sh/uv). Install the secure binary wheel directly:
 
-**📥 [Download v3.11.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.12.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP/releases/download/v3.12.0/nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl)**
 
 ```powershell
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl --force
 ```
 or if you get any errors try 
 
 ```powershell
-python -m pip install .\nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl
+python -m pip install .\nakshastramcp-3.12.0-cp313-cp313-win_amd64.whl
 ```
 
 ### 2. Register & Index
