@@ -26,16 +26,22 @@ uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/downloa
 ### 2. Configuration for AI Clients
 
 #### Claude Desktop
-Add the following to your `claude_desktop_config.json`:
+Add the following to your `.claude.json` OR `claude_desktop_config.json`:
 ```json
-{
-  "mcpServers": {
-    "nakshastramcp": {
-      "command": "nakshastramcp",
-      "args": ["start"]
-    }
-  }
-}
+"mcpServers": {
+        "nakshastrampc": {
+          "type": "stdio",
+          "disabled": false,
+          "command": "nakshastramcp",
+          "args": [
+            "start",
+            "--transport",
+            "stdio"
+          ],
+          "env": {}
+        }
+      },
+
 ```
 
 #### Cursor IDE
