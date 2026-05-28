@@ -43,7 +43,11 @@ Add the following to your `.claude.json` OR `claude_desktop_config.json`:
       },
 
 ```
-
+#### Claude cli (make sure server is running in terminal if adding http protocol and it must be stoped if adding as stdio)
+```
+claude mcp add --transport http nakshastramcp http://127.0.0.1:2102/mcp
+claude mcp add --transport stdio nakshastramcp nakshastramcp -- start --transport stdio
+```
 #### Cursor IDE
 1. Open Settings -> Models -> MCP.
 2. Add New MCP Server.
