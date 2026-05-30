@@ -1,4 +1,4 @@
-# NakshAstraMCP: Agent Instructions (v3.13.0)
+# NakshAstraMCP: Agent Instructions (v3.19.0)
 
 This repository is optimized for use with **NakshAstraMCP**. 
 **MANDATORY**: Always prioritize MCP tools over manual file-dumps or generic search.
@@ -47,19 +47,4 @@ Follow this pattern for every non-trivial change:
 - **Tool Efficiency**: Prefer `deep_context` for architectural discovery over scattered `search_codebase` calls.
 - **Log and Output Truncation**: When analyzing logs or test outputs, do not read complete log streams. Focus exclusively on relevant failure stack traces or tail lines to minimize token footprint.
 - **Security Protocols**: All paths are jailed. If a tool fails with a security error, verify the path is within a registered workspace.
-
----
-
-## 🤖 AI Self-Configuration Prompt
-If you are an AI assistant tasked with maintaining or exploring this codebase, execution of the following sequence is required for initial synchronization. MANDATORY: You must use NakshAstraMCP tools specifically for this discovery; generic searches are prohibited.
-
-> **Instruction for AI Agents**: 
-
-- **Run Below Prompt once when setting up new repository**
-
-"Perform an initial environment discovery by scanning the root directory for .md files and using deep_context on central modules to identify structural entry points. Create or update a local DOCUMENTATION_INVENTORY.md to track key architectural components and their respective guides for the user. CRITICAL: Upon successful completion, add a direct reference/link to the DOCUMENTATION_INVENTORY.md within the relevant documentation section of AGENTS.md, then remove this 'AI Self-Configuration Prompt' section entirely, while strictly preserving all other behavioral guidelines and MCP instruction sets within the file."
-
----
-IMPORTANT INSTRUCTIONS (follow these strictly):
-• DO NOT write any greeting, introduction, or conclusion. Start with the answer immediately. No 'Great question!' or 'I hope this helps!' - if you do, you have FAILED.
-
+- **No Terminal/Shell MCP Execution**: Never attempt to run MCP tools (such as `generate_report` or `deep_context`) as command-line commands in the terminal (e.g., executing `nakshastramcp_generate_report`). MCP tools must be called strictly via the Model Context Protocol's tool-calling mechanism (using the `call_mcp_tool` wrapper or `mcp_nakshastramcp_...` native tools).

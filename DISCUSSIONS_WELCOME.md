@@ -1,42 +1,49 @@
 # 💬 Discussions Welcome
 
-> **NakshAstraMCP is built for the community.** We encourage open conversation, feedback, and collaboration.
+> **Built for the Developer Community**: We actively welcome open discussion, workflows, custom Tree-sitter configurations, and feature collaborations.
 
 ---
 
-## 🗣 How to Participate
+## 👥 How to Engage & Participate
 
-We use [GitHub Discussions](https://github.com/vijaytank/NakshAstraMCP-Docs/discussions) to foster communication. Here's how you can get involved:
+We host community support and feedback inside [GitHub Discussions](https://github.com/vijaytank/NakshAstraMCP-Docs/discussions). Join the conversation across these key categories:
 
-### 💡 Ideas & Feature Requests
-Have an idea for a new feature or improvement? Share it in the **Ideas** category. We actively review community suggestions for future releases.
+### 💡 Ideas & Feature Proposals
+*   Have a feature request or an idea for AST parser enhancements?
+*   Share your proposal in the **Ideas** category. We actively refine future roadmap cycles based on community input.
 
-### ❓ Q&A
-Got a question about setup, configuration, or usage? Post in the **Q&A** category. Community members and maintainers will help you get up and running.
+### ❓ Q&A Support
+*   Need assistance with setup, configuration, or platform-specific variables?
+*   Post a question in the **Q&A** community pool. Maintainers and active contributors are ready to help you optimize your server connection.
 
-### 🎉 Show & Tell
-Built something cool with NakshAstraMCP? Share your workflow, integration, or use case. We'd love to see how you're using it.
+### 🎉 Showcase & Workflows
+*   Created a unique Tree-sitter addon setup, customized prompt system, or custom `.mcpignore` configuration?
+*   Showcase your configuration so others can optimize their developer environments!
 
-### 🐛 Bug Reports
-Found a bug? Please open a [GitHub Issue](https://github.com/vijaytank/NakshAstraMCP-Docs/issues) using the appropriate bug report template. Include:
-- Your NakshAstraMCP version (`nakshastramcp --version`)
-- Operating system and version
-- Steps to reproduce the issue
-- Relevant log output (from the [logs directory](TROUBLESHOOTING.md#-log-files))
+### 🐛 Bug Reporting
+If you identify a bug:
+1.  Verify the issue is not environment-specific by running `nakshastramcp doctor`.
+2.  Open a formal [GitHub Issue](https://github.com/vijaytank/NakshAstraMCP-Docs/issues) utilizing the standard bug reporting template.
+3.  Include:
+    *   Target build version (`nakshastramcp status`).
+    *   Operating system platform and terminal shell type.
+    *   Clean log trace segments (from your local system's `logs` folder).
 
 ---
 
-## 📌 Guidelines
+## 🛡️ Code Privacy Guardrail
 
-- **Be respectful**: We're all here to learn and build together.
-- **Search first**: Check existing discussions and issues before creating a new one.
-- **Be specific**: Include version numbers, OS details, and error messages to help us help you.
-- **No internal details**: This is a public repository. Please do not share proprietary or confidential information.
+> [!CAUTION]
+> **Strictly Protect Your Intellectual Property**:
+> This is a fully public-facing repository. When opening issues, describing bugs, or sharing stack traces:
+> *   **Do not post proprietary source code blocks** or company-confidential filenames.
+> *   **Ensure all paths, secrets, API keys, and environment tokens are completely redacted** from your uploaded logs.
+> *   Help us keep the community safe and your code completely private.
 
 ---
 
 <p align="center">
   <a href="README.md">🏠 Home</a> | 
   <a href="USER_GUIDE.md">📖 User Guide</a> | 
-  <a href="TROUBLESHOOTING.md">🛠 Troubleshooting</a>
+  <a href="TROUBLESHOOTING.md">🛠️ Troubleshooting</a>
 </p>
