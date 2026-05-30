@@ -1,137 +1,152 @@
 <div align="center" markdown="1">
 
-<img src="assets/logo.png" alt="NakshAstraMCP Hero Banner" width="100%">
+<img src="assets/logo.png" alt="NakshAstraMCP - AI Code Context Engine Banner" width="100%">
 
-**The ultimate high-performance code context engine for AI-native development.**
+# NakshAstraMCP
 
-[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-Active-green.svg)](#)
-[![Environment](https://img.shields.io/badge/env-Windows%20%2F%20macOS%20%2F%20Linux-lightgrey.svg)](#)
+**The ultimate high-performance local code context engine for AI-native software development.**
+
+[![License](https://img.shields.io/badge/License-Proprietary-EB5757.svg?style=for-the-badge&logoWidth=40)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Active-27AE60.svg?style=for-the-badge)](#)
+[![OS Support](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-2F80ED.svg?style=for-the-badge)](#)
+[![Release](https://img.shields.io/badge/Release-v3.19.0-8E44AD.svg?style=for-the-badge)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/tag/v3.19.0)
 
 </div>
 
 ---
 
-## 📖 Overview
+## 📖 Search & Discoverability Overview
 
-NakshAstraMCP provides AI agents (Claude, Cursor, Antigravity, etc.) with deep, structural understanding of your local codebase. Using advanced AST parsing and high-speed semantic ranking, it delivers the exact context your developer tools need to solve complex problems across large projects.
+**NakshAstraMCP** is an ultra-fast, local-first **Model Context Protocol (MCP)** server built to empower AI coding assistants (including **Claude Desktop**, **Cursor IDE**, **Windsurf**, and **Antigravity**) with a deep, AST-accurate, structural understanding of your codebases. 
 
-### 🗺 Documentation Hub
-Quickly navigate to detailed guides:
+Unlike generic text searches or broad file dumps that inflate your LLM token costs and dilute context, NakshAstraMCP parses class hierarchies, function boundaries, and cross-file reference graphs to supply AI agents with the *exact* context required to solve complex programming tasks safely.
 
-| 🚀 [Setup Guide](SETUP.md) | 📖 [User Guide](USER_GUIDE.md) | 🤖 [Agent Guide](agent.md) |
+### 🧭 Documentation Hub
+Explore detailed guides to onboard, optimize, and secure your development workflows:
+
+| 🚀 [Setup Guide](SETUP.md) | 📖 [User Guide](USER_GUIDE.md) | 🤖 [Agent Guide](AGENTS.md) |
 | :---: | :---: | :---: |
-| *Install & Configure* | *Advanced Usage & Tips* | *Behavioral Guide for AI* |
+| *Step-by-step Installation* | *Advanced Usage & CLI Control* | *Behavioral System Prompt Instructions* |
 
-| 📜 [LICENSE](LICENSE) | 🛡 [Security Policy](SECURITY.md) | 💬 [Discussions](DISCUSSIONS_WELCOME.md) |
+| 📜 [License](LICENSE) | 🛡️ [Security Policy](SECURITY.md) | 💬 [Community Discussions](DISCUSSIONS_WELCOME.md) |
 | :---: | :---: | :---: |
-| *LICENSE * | *Privacy & Data Safety* | *Community & Support* |
-| | [🛠 Troubleshooting](TROUBLESHOOTING.md) | |
+| *Usage Terms* | *Local Privacy & Safety* | *Q&A, Ideas & Feedback* |
+| [🎯 MCP-First Skill](mcp_first_skill.md) | [🛠️ Troubleshooting](TROUBLESHOOTING.md) | |
 
 ---
 
-## 🏆 Assessment & Performance
+## 🏆 Performance Benchmarks & Efficiency
 
-- **Overall Efficiency**: **9.3 / 10** (Industry-leading structural context)
-- **Index/Search Latency**: **~0.68ms p95** (Ultra-low latency on 10,000-file repos)
-- **Idle Memory**: **< 150 MB RAM**
-- **Language Support**: Deep AST integration for **Python, JavaScript, TypeScript, Java, and Kotlin**.
-- **ROI Benchmark**: **75% Cost Reduction** vs. manual LLM context retrieval.
+*   **⚡ Search Latency**: **~0.68ms (p95)** on medium-to-large code repositories.
+*   **🧠 Semantic Alignment**: CPU-bound FlashRank reranker matches results based on programming intent.
+*   **🍃 Footprint**: Incredibly lightweight (runs under **< 150 MB idle RAM** with automatic garbage collection).
+*   **🌲 Language Support**: Deep out-of-the-box AST parsing for **Python, JavaScript, TypeScript (TSX), Java, and Kotlin**.
+*   **📉 Token Savings**: Reduces LLM context payload sizes and costs by up to **75%**.
 
-#### 📊 Performance vs. Manual Analysis
-| Metric | With NakshAstraMCP | Without MCP (Manual) | **Efficiency Win** |
+### 📊 Context Retrieval Metrics vs. Manual Analysis
+We tested NakshAstraMCP on a large commercial codebase with over 10,000 source files.
+
+| Metric | With NakshAstraMCP | Without MCP (Manual Search) | **Efficiency Win** |
 | :--- | :--- | :--- | :--- |
-| **Context Fidelity** | **High**: specific symbols & graph neighbors | **Low**: Generic architectural layers | **Deep Context** |
-| **API Cost** | **$0.09** | **$0.37** | **75% Cheaper** |
-| **Wall Clock Time** | **1m 21s** | **2m 5s** | **35% Faster** |
+| **Context Fidelity** | **High**: specific AST symbols & immediate neighbors | **Low**: scattered keyword-only search layers | **High-Precision Context** |
+| **LLM Token Cost** | **$0.09** | **$0.37** | **75% Cost Reduction** |
+| **Wall Clock Time** | **1m 21s** | **2m 05s** | **35% Speed Increase** |
 
 <br>
 
 <div align="center">
-  <img src="assets/dashboard_search.png" alt="NakshAstraMCP Dashboard - Search" width="90%">
-  <p><em>Lightning-fast hybrid search across multiple repositories.</em></p>
+  <img src="assets/dashboard_search.png" alt="NakshAstraMCP Search Interface Dashboard" width="90%">
+  <p><em>Sleek multi-repository hybrid search with instant lexical routing.</em></p>
 </div>
 
-### ✨ Key Features
-- 🔍 **Hybrid Multi-Repo Search** — Indexed search across all your projects simultaneously.
-- 🧠 **Semantic Reranking** — AI-powered results prioritized by conceptual relevance using FlashRank.
-- 🌳 **AST-Aware Analysis** — Understands code structure (classes, functions, imports) natively.
-- 🤖 **Automated Agent Orchestration** — Self-provisioning `agent.md` instructions with non-destructive backup.
-- 🗺️ **Knowledge Mapping** — Automated architectural reports (`NAKSHASTRA_REPORT.md`) and community detection.
-- 🩺 **Surgical Intelligence** — High-precision tools (`read_file`, `find_symbol`, `find_references`) for localized context retrieval.
-- 🛡️ **Administrative Control** — Full CLI control over server lifecycle (`stop`, `restart`, `logs`).
-- 👁️ **Real-Time Watcher** — Changes are indexed instantly with mass-update protection.
-- 🧩 **Runtime Language Addons** — Provision new Tree-sitter grammars at runtime.
-- 📈 **Visual Dashboard** — Interactive Nebula Graph UI with health monitoring.
-- 🧹 **Operational Resilience** — Built-in Memory Guard and WAL checkpointing for stability.
+---
+
+## ✨ Features & Architecture Capabilities
+
+*   🔍 **Multi-Repo Hybrid Search** — Search and merge context across all your projects simultaneously.
+*   🧠 **Semantic Reranking** — Employs advanced machine learning reranking to prioritize conceptual relevance.
+*   🌳 **AST-Aware Truncation** — Returns complete, syntactically valid classes or functions instead of arbitrarily sliced text blocks.
+*   📊 **PageRank Relevance** — Grades code importance based on cross-file call frequency and import patterns.
+*   🤖 **Automated Agent Orchestration & Skills** — Automatically provisions project-specific `AGENTS.md` instructions and supports the standard [🎯 MCP-First Skill Profile](mcp_first_skill.md) to guide AI coding assistants.
+*   🛡️ **Access Control Jail** — Strictly sandboxed to registered project roots; protects sensitive environments.
+*   👁️ **Real-Time Workspace Watcher** — Debounces filesystem updates with automatic mass-update safeguards.
+*   🧩 **Runtime Language Addons** — Provision new Tree-sitter grammars (e.g., Go, Rust, Ruby) at runtime.
+*   🧹 **Operational Resilience** — Built-in Memory Guard prevents system memory leaks during long-running tasks.
+*   📈 **Nebula UI Dashboard** — High-fidelity Streamlit visualization tool to analyze context graphs.
 
 <div align="center">
-  <img src="assets/dashboard_stats.png" alt="NakshAstraMCP Dashboard - Statistics" width="90%">
-  <p><em>Detailed indexing statistics and server health monitoring.</em></p>
+  <img src="assets/dashboard_stats.png" alt="NakshAstraMCP System Monitoring Analytics Dashboard" width="90%">
+  <p><em>Real-time indexing statistics and memory usage tracking.</em></p>
 </div>
 
 ---
 
 ## 🚀 Quick Start (Fast-Track)
 
-### 1. Unified Installation
-Requires [uv](https://astral.sh/uv). Install the secure binary wheel directly:
-
-**📥 [Download v3.11.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl)**
-
+### 1. Prerequisite
+Ensure [uv](https://astral.sh/uv) (fast Python package manager) is installed on your system:
 ```powershell
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl --force
-```
-or if you get any errors try 
-
-```powershell
-python -m pip install .\nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl
+# Windows (PowerShell)
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### 2. Register & Index
-Initialize your workspace roots to build the local knowledge graph:
+### 2. Universal Wheel Installation
+NakshAstraMCP is distributed as a pre-compiled secure binary wheel for maximum performance:
+
+**📥 [Download v3.19.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl)**
+
+Install the wheel directly into your global environment:
+```powershell
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl --force
+```
+*Alternatively, using standard Python pip:*
+```powershell
+python -m pip install .\nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl
+```
+
+### 3. Register & Index Workspace
+Navigate to your target codebase and register it:
 ```powershell
 nakshastramcp start --workspace C:\path\to\your\project
 ```
 
-### 3. Verification & Health
+### 4. Verify Server Health
+Ensure your indexing is complete and the runtime environment is pristine:
 ```powershell
-nakshastramcp status  # Check indexing progress
-nakshastramcp doctor  # Perform full environment audit
-nakshastramcp report . # Generate architectural knowledge map
+nakshastramcp doctor   # Comprehensive pre-flight system diagnostics
+nakshastramcp status   # View active indexing states and repositories
 ```
 
 ---
 
-## 💻 Hardware Tiers
+## 💻 System Configuration & Hardware Tiers
 
-NakshAstraMCP adapts to your system automatically:
+The engine scales dynamically based on system capabilities:
 
-| Tier | Specs | Capabilities |
-|------|-------|-------------|
-| **Minimal** | 2 cores / 4 GB RAM | Core search engine |
-| **Recommended** | 4 cores / 8 GB RAM | + Semantic reranking + High-performance indexing |
-| **Optimal** | 8+ cores / 16 GB RAM | Full graph analysis + Deep reranking |
-
----
-
-## 🌉 Multi-Client Connectivity
-
-NakshAstraMCP supports concurrent sessions from multiple IDEs via the **Dual Transport Bridge**.
-
-- **Primary Host**: Your main IDE (e.g., Cursor) starts the host session.
-- **HTTP Follower**: Configure secondary tools (e.g., VS Code extension) to connect to the bridge:
-  - **URL**: `http://127.0.0.1:2102/mcp`
-  - **Type**: `streamable-http`
+| Tier | Minimum Specs | Features Enabled |
+| :--- | :--- | :--- |
+| **Minimal** | 2 CPU Cores / 4 GB RAM | Core keyword search, aggressive Memory Guard cleanups |
+| **Recommended** | 4 CPU Cores / 8 GB RAM | + Tantivy FTS, CPU FlashRank Semantic Reranking |
+| **Optimal** | 8+ CPU Cores / 16 GB RAM | + PageRank graph calculations, deep AST relationship mapping |
 
 ---
 
-## 🛡 Security & Privacy
+## 🌉 Concurrent Multi-Client Connectivity
 
-- **100% Local**: No source code or indices ever leave your machine.
-- **Sensitive Data Detection**: Integrated secret scanner prevents indexing of API keys.
-- **Sandboxed Execution**: The engine only accesses registered workspace roots.
-- **Zero Telemetry**: No usage data is collected. Fully offline operation.
+NakshAstraMCP integrates a **Dual Transport Bridge** allowing multiple IDEs and clients to share a single background session.
+*   **Host Session**: Your primary editor (e.g., Antigravity or Cursor) spawns the host command utilizing `stdio` transport.
+*   **HTTP Bridge**: The host automatically exposes a streamable HTTP connection on port `2102`.
+*   **Secondary Clients**: Other clients (such as VS Code extensions or external AI scripts) can connect to the shared context simultaneously via:
+    *   **URL**: `http://127.0.0.1:2102/mcp`
+    *   **Type**: `streamable-http`
+
+---
+
+## 🛡️ Security & Privacy Guardrails
+
+*   **100% Local Execution**: All indexes and calculations remain strictly on your local machine. No code leaves your system.
+*   **Secret Detection**: Integrated secret scanners actively prevent the indexing of API keys, passwords, and sensitive keys.
+*   **Jailed Paths**: Enforces strict sandboxing rules to block symbolic link exploits and access beyond authorized workspaces.
 
 ---
 

@@ -1,0 +1,5 @@
+{
+  "tree_sitter_python": "98fa266176168e70ea8dd6b972dded515ebf1226a78e34cdd840a393e861842f",
+  "tree_sitter_javascript": "2698d9027b5e25e144001780969f0bd74bdc54cac97eca4f6b06cda587811167",
+  "tree_sitter_typescript": "48bcf7ce38cd4aed60ac59ad988e39db8498a57359a84c94c0c31762b145a0f3"
+}

@@ -1,104 +1,80 @@
-# NakshAstraMCP-Docs for AI Agents
+# NakshAstraMCP — Public Distribution Documentation
 
-Repository: https://github.com/vijaytank/NakshAstraMCP-Docs
-
----
-
-## Purpose
-NakshAstraMCP is an MCP server designed to give AI coding agents precise, low-latency access to local code context using AST-aware symbol graphs, semantic reranking, and graph-based relevance scoring.
+**Global Context for AI Coding Agents**  
+Repository Hub: [https://github.com/vijaytank/NakshAstraMCP-Docs](https://github.com/vijaytank/NakshAstraMCP-Docs)  
+Target Build Baseline: **v3.19.0**
 
 ---
 
-## Agent Instruction
-Paste the block below into your AI agent's custom instructions, system prompt, or workspace rules:
+## 🎯 Design Intent
+
+NakshAstraMCP is a lightweight, local-first Model Context Protocol (MCP) server engineered to provide AI coding assistants with high-fidelity, AST-accurate code context. By implementing Tree-sitter parsers and semantic reranking pipelines, the server reduces context bloat, leading to faster response latency and massive LLM token savings.
+
+---
+
+## 🤖 Global Agent Custom Instructions
+
+To ensure your AI assistant (e.g. Cursor, Claude, Windsurf, or Antigravity) uses NakshAstraMCP efficiently, copy the following block into your system instructions, custom prompt settings, or workspace `.cursorrules` / `agent.md` file:
 
 ```md
-When working with this codebase, always use the NakshAstraMCP-Docs MCP tools first for code understanding, symbol lookup, dependency tracing, and relevant context retrieval.
+When interacting with this codebase, prioritize using the NakshAstraMCP server tools (`nakshastramcp`) for context retrieval, structural code navigation, class search, and usage auditing.
 
-Do not rely on generic search or broad file dumping when the MCP server can answer the question.
+Avoid executing expensive and slow manual shell commands (like grep, find, or recursive directory lists) when MCP tools can fetch the context directly.
 
-Preferred behavior:
-- **Locate Precisely**: Use `find_symbol` to identify the exact definition of classes, functions, or methods across all registered workspaces.
-- **Trace Impact**: Use `find_references` to audit the call sites and impact radius before proposing any code changes.
-- **Surgical Inspection**: Use `read_file` with precise line ranges to retrieve only the relevant code sections. Never dump a whole file if a specific range can answer the question.
-- **Discovery**: Use `deep_context` for broad architectural discovery and identifying connected symbols through 2-hop graph expansion.
-- **Connect Symbols**: Prioritize files/symbols with stronger graph relevance and reference centrality when selecting candidate implementation sites.
-- **Minimal Context**: Retrieve only the smallest set of highly relevant code symbols needed to solve the task, reducing overall token usage.
-- **Tracing**: For bug fixing, identify the symbol origin and execution path through the MCP tools before suggesting a patch.
+### Standard Surgical Context Workflow:
+1. **Architectural Analysis**: Check `nakshastra-out/NAKSHASTRA_REPORT.md` (or run `generate_report`) to map physical files and Louvain-grouped package clusters.
+2. **Context Discovery**: Use `deep_context` as the primary search entry point for multi-file conceptual queries. It retrieves the best matches and includes immediate 1-hop AST neighbor dependencies.
+3. **Go to Definition**: Call `find_symbol` with the exact class, function, or method name to locate definitions instantly across all workspaces.
+4. **Impact Analysis**: Call `find_references` to audit call sites and dependencies of custom functions before making code updates.
+5. **Code Reading**: Use `read_file` with targeted `start_line` and `end_line` parameters. NEVER print a whole file to prompt context if a specific line-range meets the requirements.
 
-Why this matters:
-- It solves context fragmentation by giving structured local code understanding instead of isolated text matches.
-- It reduces token usage by sending only relevant symbols and code paths rather than large unrelated file chunks.
-- It improves development quality by grounding suggestions in real code relationships, definitions, and usage patterns.
-
-Fallback rule:
-- Use generic search only when the MCP server cannot answer the question, when the issue is clearly outside the indexed codebase, or when external documentation is explicitly required.
+### Tool Security Guardrails:
+* All operations are strictly sandboxed within registered workspace paths.
+* Never execute MCP tool invocations inside CLI shell terminals. Interact strictly via standard client RPC tool wrappers.
 ```
 
 ---
 
-## Short Version
+## 🚀 Interactive Verification: Before vs. After MCP Onboarding
+
+Compare the performance of NakshAstraMCP against traditional search methods by executing this dual-phase diagnostic test in your workspace:
+
+### Phase 1: Test BEFORE Installing NakshAstraMCP
+Instruct your AI agent to locate a core function (e.g. `handleUserLogin` or similar central handler) using only standard workspace tools:
+
 ```md
-Use NakshAstraMCP as the default source of truth for local code context. Always query it before generic search. Prefer symbol-level, AST-aware, semantically reranked context retrieval. Minimize token usage by fetching only the most relevant definitions, references, and dependencies needed for the current task.
+I'm auditing a local repository. For the core handler function `handleUserLogin` (or a similar central function):
+1. Find where it is defined (Show filename and line-range boundaries).
+2. Trace all callers (Find references and usages across files).
+3. Identify the minimum necessary files, models, and configs needed to refactor it safely.
+
+Use ONLY manual file searches and text grep commands. Do not assume any AST-aware symbol database or local MCP server is running.
+
+**Requirement**: Save your complete response and list of steps in `before_mcp_handleUserLogin.txt`. Record the total model tokens consumed.
 ```
 
 ---
 
-## Best Use Cases
-- Understanding unfamiliar codebases.
-- Tracing definitions, references, and call flows.
-- Safer refactoring with dependency awareness.
-- Reducing token waste in AI coding workflows.
-- Improving answer accuracy in Claude, Cursor, and similar agents.
-
----
-
-## How to Test NakshAstraMCP-Docs: Before vs. After
-
-Use **the exact same prompt below** in two steps so you can clearly see the difference in the AI's answers:
-
-### 1. Run BEFORE installing NakshAstraMCP-Docs
-Ask your AI agent:
+### Phase 2: Test AFTER Installing NakshAstraMCP
+Run the exact same prompt with the server active and the agent utilizing the surgical tools:
 
 ```md
-I'm working on a local codebase. For the function `handleUserLogin` (or a similar central function in the project):
+I'm auditing a local repository. For the core handler function `handleUserLogin` (or a similar central function):
+1. Find where it is defined (Show filename and line-range boundaries).
+2. Trace all callers (Find references and usages across files).
+3. Identify the minimum necessary files, models, and configs needed to refactor it safely.
 
-1. Find where it is defined and show the file and line range.
-2. List all places where it is called (usages/references).
-3. Describe the minimal set of context (files, functions, types, config, etc.) that an AI agent would need to safely refactor this function without breaking any callers.
+Use the NakshAstraMCP server as the primary context source. Prioritize AST symbol graph lookups, PageRank importance, and semantic reranking over plain text search.
 
-Use only generic search and file‑based tools. Do not assume any AST‑aware symbol‑graph or MCP server exists.
-
-**Important:** Save the full answer (including which files, lines, and reasoning you used) in a file named `before_mcp_handleUserLogin.txt`. Also record the total tokens used for this response.
+**Requirement**: Save your complete response and list of steps in `after_mcp_handleUserLogin.txt`. Record the total model tokens consumed.
 ```
 
 ---
 
-### 2. Run AFTER installing NakshAstraMCP-Docs
-Use the **exact same question** again, but now the agent has access to the MCP server:
+### 📈 Metrics Evaluation Checklist
 
-```md
-I'm working on a local codebase. For the function `handleUserLogin` (or a similar central function in the project):
-
-1. Find where it is defined and show the file and line range.
-2. List all places where it is called (usages/references).
-3. Describe the minimal set of context (files, functions, types, config, etc.) that an AI agent would need to safely refactor this function without breaking any callers.
-
-Use NakshAstraMCP-Docs (the local MCP server for code context) as the primary source. Prefer AST‑aware symbol graphs, semantic reranking, and graph‑based relevance over raw file search.
-
-**Important:** Save the full answer (including which MCP tools were used and how the context is different from generic search) in a file named `after_mcp_handleUserLogin.txt`. Also record the total tokens used for this response.
-```
-
----
-
-## Comparison Checklist
-When comparing `before_mcp_handleUserLogin.txt` and `after_mcp_handleUserLogin.txt`, evaluate:
-- **Accuracy**: Are definitions and references precise?
-- **Completeness**: Does the MCP version cover all relevant files and dependencies?
-- **Noise Reduction**: Are irrelevant files excluded?
-- **Token Usage**: How many tokens were consumed before vs. after?
-- **Reasoning Quality**: Is the MCP answer grounded in actual code relationships instead of text matches?
-
----
-
-By following this process, you can clearly see how NakshAstraMCP-Docs improves context precision, reduces token waste, and enhances AI-assisted coding workflows.
+Review `before_mcp_handleUserLogin.txt` and `after_mcp_handleUserLogin.txt` side-by-side:
+*   **Context Accuracy**: Did the MCP version pinpoint definition lines precisely without enclosing junk?
+*   **Noisy Payload Reduction**: Were unrelated build folders, configuration files, and package stubs filtered out?
+*   **Token Consumption**: Compare the token counts. You should see up to a **75% reduction** in prompt sizes.
+*   **Audit Confidence**: Does the MCP version provide clear 1-hop dependencies that grep-only searches missed?

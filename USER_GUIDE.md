@@ -1,32 +1,17 @@
 # 📖 NakshAstraMCP User Guide
 
-> **Master your workflow**: Deep analysis, multi-client connectivity, and visualization.
+> **Maximize AI Developer Context**: Master hybrid search, multi-client bridges, real-time watchers, and visual graph diagnostics.
 
 ---
 
-> **Vision**: Empower AI agents with high-fidelity local code context at zero infrastructure cost.
+## 🚀 Client Configuration
 
----
+Once NakshAstraMCP is installed, add it to your preferred AI coding environments to start querying context automatically.
 
-## 📋 Prerequisites
-- **OS**: Windows 10+ (tested on v11), macOS 12+, or Linux (glibc 2.31+).
-- **Hardware**: See the [Hardware Tiers](#-hardware-tiers) section for recommended specifications.
+### 1. Claude Desktop (macOS / Windows)
 
----
-
-## 🚀 Getting Started
-
-### 1. Installation
-Ensure [uv](https://astral.sh/uv) is installed, then install the universal wheel:
-```powershell
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.0.0/nakshastramcp-3.11.0-cp313-cp313-win_amd64.whl --force
-```
-
-### 2. Configuration for AI Clients
-
-#### Claude Desktop
-Add the following to your `claude_desktop_config.json`:
+#### Option A: Manual Configuration
+Add the server definition to your `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
@@ -37,16 +22,30 @@ Add the following to your `claude_desktop_config.json`:
   }
 }
 ```
+*Note: Once a workspace path is registered using the CLI, NakshAstraMCP's centralized database remembers it. Your IDE config only needs the plain `start` action.*
 
-#### Cursor IDE
-1. Open Settings -> Models -> MCP.
-2. Add New MCP Server.
-3. Name: `NakshAstra`.
-4. Command: `nakshastramcp`.
-5. Arguments: `start`, `--transport`, `stdio`.
+#### Option B: Easy Automation via Claude CLI
+You can easily provision and register NakshAstraMCP inside Claude using the official Claude CLI tool:
 
-#### Antigravity (mcp_config.json)
-Add the following to your `mcp_config.json`:
+*   **For HTTP Bridge Transport** (Requires the background server to be actively running in another terminal window):
+    ```bash
+    claude mcp add --transport http nakshastramcp http://127.0.0.1:2102/mcp
+    ```
+*   **For Direct STDIO Transport** (The server must be stopped/inactive in the terminal; Claude will manage its lifecycle):
+    ```bash
+    claude mcp add --transport stdio nakshastramcp nakshastramcp -- start --transport stdio
+    ```
+
+### 2. Cursor IDE
+1. Open **Settings** -> **Models** -> **MCP**.
+2. Click **+ Add New MCP Server**.
+3. Name: `NakshAstra`
+4. Transport: `stdio`
+5. Command: `nakshastramcp`
+6. Arguments: `start`, `--transport`, `stdio`
+
+### 3. Antigravity IDE
+Configure the server block inside your `mcp_config.json`:
 ```json
 {
   "mcpServers": {
@@ -64,188 +63,137 @@ Add the following to your `mcp_config.json`:
 }
 ```
 
----
+### 4. Factory AI
 
-## 🌉 Multi-Client Connectivity (Dual Transport Bridge)
-
-NakshAstraMCP introduces a **Dual Transport Bridge**, allowing one host instance to serve multiple clients simultaneously.
-
-### Use Case
-You are working in **Antigravity** (Host) while also using **VS Code** (Follower) for specific extensions. Both can connect to the same NakshAstraMCP instance.
-
-### Configuration for Follower Applications
-When the host is active, other tools can connect to the bridge:
-- **Type**: `streamable-http`
-- **URL**: `http://127.0.0.1:2102/mcp`
-
----
-
-## 💻 Hardware Tiers
-
-NakshAstraMCP automatically adapts its engine capabilities based on your available hardware:
-
-| Tier | Specs | Capabilities |
-|------|-------|-------------|
-| **Minimal** | 2 cores / 4 GB RAM | Core search engine, aggressive memory management |
-| **Recommended** | 4 cores / 8 GB RAM | + Semantic reranking + High-performance indexing |
-| **Optimal** | 8+ cores / 16 GB RAM | Full graph analysis + Deep reranking |
-| **Massive Repo** | 8+ cores / 16 GB+ RAM | Optimized for repositories with 50k+ files |
-
-**Performance SLA**: p95 query latency under 500ms on a 10,000-file repository.
-
----
-
-### 🤖 Automated Agent Orchestration
-Starting with v3.11.0, NakshAstraMCP automatically manages agent behavior within your workspace.
-
-- **Zero-Config Onboarding**: When you register a workspace via `nakshastramcp start --workspace .`, the server automatically provisions a project-specific `agent.md` file.
-- **AI Guidance**: This file instructs LLM agents to prioritize NakshAstraMCP tools over generic search methods, ensuring consistent performance and lower API costs.
-- **Safety First**: If you already have an `agent.md` file, NakshAstraMCP will safely rename it to `agent_backup.md` before provisioning the optimized version.
-
----
-
-## 🩺 Surgical Intelligence Tools
-
-NakshAstraMCP v3.11.0 introduces high-precision tools designed for minimal token usage and maximum accuracy.
-
-### `search_codebase`
-Performs a hybrid search (Tantivy BM25 + FlashRank Reranking) across your registered repositories.
-- When `workspace_path` is omitted, **all registered workspaces** are searched and results are merged by score.
-- **Usage**: "Find where the authentication logic is handled."
-
-### `deep_context`
-Analyzes cross-file relationships and provides structural snippets with 2-hop graph expansion.
-- Supports **multi-workspace** search — results are merged and sorted by relevance score.
-- **Usage**: "Explain how the DataManager class is initialized."
-
-### `generate_report`
-Manually triggers a full architectural analysis of your workspace.
-- Generates `NAKSHASTRA_REPORT.md` and `graph.json` in the `nakshastra-out/` directory.
-- **Usage**: "Refresh the architectural map for this project."
-
-### Precision Retrieval Tools
-
-- **`read_file`**: Read precise line ranges of a file. AI agents use this to avoid dumping entire large files.
-- **`find_symbol`**: Locate exactly where a class, function, or method is defined across all registered workspaces.
-- **`find_references`**: Trace every usage of a symbol to understand the impact of potential changes.
-- **`generate_report`**: Produce a macro-level architectural report of the workspace.
-- **`server_status`**: Returns internal health metrics, memory usage, and indexing status.
-
----
-
----
-
-## 🗺️ Knowledge Mapping (Architectural Intelligence)
-
-NakshAstraMCP v3.11.0 introduces **Knowledge Mapping**, a deterministic engine that provides a macro-level view of your codebase.
-
-### 📊 Automated Reports
-Every full scan automatically generates a `nakshastra-out/` directory in your workspace root containing:
-- **`NAKSHASTRA_REPORT.md`**: A human-readable summary of the codebase.
-    - **God Nodes**: Identification of high-impact central hubs (PageRank).
-    - **Module Communities**: Automated grouping of related files into functional clusters (Louvain).
-- **`graph.json`**: A portable export of the code-relationship graph for use in external visualization tools.
-
-### 🧠 Community Detection
-The engine analyzes the relationships between files (imports, calls, and documentation links) to identify "communities." These clusters help AI agents understand how the project is logically organized, even in large or monolith repositories.
-
-### 🛠️ Manual Report Generation
-You can manually trigger a report refresh at any time via the CLI:
-```powershell
-nakshastramcp report .
+#### Option A: Manual HTTP Transport Setup
+Configure the server block inside your Factory client configuration settings:
+```json
+{
+  "mcpServers": {
+    "nakshastramcp": {
+      "type": "http",
+      "url": "http://127.0.0.1:2102/mcp",
+      "disabled": false
+    }
+  }
+}
 ```
-This is useful after major refactors or when you've added new documentation that you want to be included in the knowledge graph.
+*(Note: Requires the NakshAstraMCP background host server to be actively running in another window.)*
+
+#### Option B: Manual STDIO Transport Setup
+If adding NakshAstraMCP directly using standard STDIO transport via Factory CLI or client UI:
+*   **Server Name**: `nakshastramcp`
+*   **Server Type**: `stdio`
+*   **Command**: `nakshastramcp start --transport stdio`
+*(Note: The background server must be stopped/inactive in the terminal; Factory will manage the process lifecycle.)*
 
 ---
 
-## 🛠️ Important Commands
+## 🌉 Dual Transport Connection Bridge
 
-| Category | Action | Command |
-| --- | --- | --- |
-| **Lifecycle** | **Start** | `nakshastramcp start --workspace <path>` |
-| | **Stop** | `nakshastramcp stop` |
-| | **Restart** | `nakshastramcp restart` |
-| **Diagnostics** | **Health Check** | `nakshastramcp doctor` |
-| | **Logs** | `nakshastramcp logs [--follow]` |
-| | **Status** | `nakshastramcp status` |
-| **Advanced** | **Visual UI** | `nakshastramcp ui` |
-| | **Provision** | `nakshastramcp provision --lang <name> --lib <path>` |
-| | **Cleanup** | `nakshastramcp gc` |
+NakshAstraMCP features a **Dual Transport Bridge**. When started via stdio inside your main IDE, the host session automatically spawns a local, streamable HTTP connection on port `2102`.
+
+### Practical Use Case
+If you use **Antigravity** (Host) for terminal workflows and **VS Code** (Follower) with specialized extensions, both can query the same local codebase context graph simultaneously without thread lock contention.
+
+### Configuring Followers
+Point follower clients to the active background bridge:
+*   **Type**: `streamable-http`
+*   **Bridge URL**: `http://127.0.0.1:2102/mcp`
 
 ---
 
-## 🔄 Background vs. CLI Management
+## 🤖 Automated Agent Orchestration
 
-NakshAstraMCP is designed to be a **"Set it and Forget it"** tool:
-
-1. **Background Management (Daily Use)**:
-   When configured in an IDE like **Antigravity**, **Cursor**, or **VS Code**, the server is managed automatically. The IDE spawns the process when it starts and terminates it when it closes. You do not need to manage the server manually.
-
-2. **CLI Management (Advanced Use)**:
-   For debugging, health checks, or manual workspace registration, use the commands listed above. The CLI is optional and provided for advanced users.
+Starting with v3.16.0, NakshAstraMCP simplifies onboarding for new team members and external subagents:
+*   **Zero-Config Onboarding**: When registering a repository via `nakshastramcp start --workspace .`, the server automatically provisions a custom `AGENTS.md` instructions file in your workspace root.
+*   **Prompt Alignment**: The file teaches AI agents to prioritize surgical tools (`read_file` with line boundaries, `find_symbol`) over expensive plain text grepping.
+*   **Non-Destructive Overwrites**: If an older custom `AGENTS.md` already exists, it is backed up to `AGENTS_Backup.md` safely.
+*   **MCP-First Skill File Profile**: Users can load the standard [🎯 MCP-First Skill Profile](mcp_first_skill.md) into AI assistants (like Claude, Cursor, Antigravity, and Windsurf) to enforce precise, AST-aware, token-optimized workflow habits across all codebase tasks.
 
 ---
 
-## 🚫 `.mcpignore` Configuration
+## 🩺 Surgical Context Tools
 
-Control which files and directories are excluded from indexing by placing a `.mcpignore` file in your workspace root. The syntax is identical to `.gitignore`:
+NakshAstraMCP registers high-precision tools on your AI client to extract code relationships cleanly while reducing token waste.
 
-```
-# Exclude build artifacts
-dist/
-build/
-node_modules/
+### Primary Tools
 
-# Exclude large data files
-*.csv
-*.parquet
-*.sqlite
-
-# Exclude specific directories
-vendor/
-__pycache__/
-.git/
-```
-
-> **Tip**: Changes to `.mcpignore` take effect immediately — the real-time watcher picks them up automatically.
+*   **`deep_context`** — Semantically searches all active workspaces, extracts matched symbols, and expands search boundaries by mapping immediate 1-hop AST imports and neighbors.
+*   **`search_codebase`** — Hybrid keyword search across all indexed workspaces. Automatically blends score results.
+*   **`find_symbol`** — High-precision index lookup to locate definitions (class, function, method structures) by exact identifier name.
+*   **`find_references`** — Scans all registered source directories to locate exact call sites and usage metrics for custom functions.
+*   **`read_file`** — Surgical reader that fetches specific line-number ranges (e.g. `start_line` to `end_line`) to avoid dumping massive source files into LLM prompts.
+*   **`generate_report`** — Triggers a comprehensive architectural synthesis, outputting a detailed code relationship map (`NAKSHASTRA_REPORT.md`) and Graph visualization data (`graph.json`) in the workspace `nakshastra-out/` folder.
+*   **`server_status`** — Provides diagnostic insights, indexing metrics, active workspaces, and runtime resource limits.
 
 ---
 
-## 🧩 Adding New Language Support (Addons)
+## 🗺️ High-Fidelity Knowledge Mapping
 
-NakshAstraMCP supports [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammars. While popular languages like Python, JS/TS, Java, and Kotlin are built-in, you can add any other language at runtime.
+NakshAstraMCP includes a background **Architectural Report Engine** to synthesize code relationship graphs.
 
-### Provisioning a Language
-1.  **Obtain a compiled grammar** (`.dll` for Windows, `.so` for Linux/macOS).
-2.  **Provision the language**:
+### 📊 Artifact Generation
+When a scan is triggered manually or automatically, the engine creates a `nakshastra-out/` folder inside your project containing:
+1.  **`NAKSHASTRA_REPORT.md`**: A clean, structured overview showing:
+    *   **High-Impact Files**: Code files calculated to be key architectural hubs.
+    *   **High-Impact Symbols**: Central logical abstractions with precise, clickable IDE line links (e.g. `file:///path/to/file#L10-L45`).
+    *   **Module Communities**: Logical clusters grouped automatically by package communities and named after their dominant parent directories (e.g. `auth`, `db`, `models`).
+2.  **`graph.json`**: A raw symbol dependency map in JSON format that can be parsed or rendered in external diagram tools.
+
+---
+
+## 🛠️ Unified CLI Command Reference
+
+Manage server lifecycles, configuration, and environment cleanup directly via the CLI:
+
+| Command | Action | Description |
+| :--- | :--- | :--- |
+| `nakshastramcp start --workspace <path>` | Start / Register | Initializes, indexes, and monitors a target code repository. |
+| `nakshastramcp stop` | Stop Server | Gracefully terminates active background server processes. |
+| `nakshastramcp restart` | Restart Server | Flushes active sessions and restarts background transports. |
+| `nakshastramcp status` | Diagnostic Status | View database indexes, workspace lists, and server health. |
+| `nakshastramcp doctor` | Environment Audit | Runs 12 comprehensive runtime checks to detect configuration issues. |
+| `nakshastramcp logs [--follow]` | Process Logs | Streams real-time error logs and performance statistics to terminal. |
+| `nakshastramcp ui` | Launch Dashboard | Opens the **Nebula Graph UI** to interactively visualize structural charts. |
+| `nakshastramcp gc` | Clean Indexes | Triggers immediate garbage collection and deletes old database indexes. |
+| `nakshastramcp provision --lang <name> --lib <path>` | Add Language | Dynamically provision custom tree-sitter grammars at runtime. |
+
+---
+
+## 🧩 Adding Custom Language Support (Addons)
+
+While core languages (Python, JavaScript, TypeScript, Java, and Kotlin) are natively supported, you can configure new language syntax grammars dynamically.
+
+### Step-by-Step Grammar Provisioning
+1.  **Obtain Binary Grammar**: Fetch or compile a Tree-sitter binary compiled grammar library (`.dll` on Windows, `.so` on Linux/macOS) for your target language (e.g. Go).
+2.  **Provision Grammar**: Run the CLI provision command:
     ```powershell
-    nakshastramcp provision --lang go --lib ./tree_sitter_go.dll
+    nakshastramcp provision --lang go --lib .\tree_sitter_go.dll
     ```
-3.  **Verify**: The server will validate the binary and copy it to its internal store. No restart is required for the indexing engine to pick up the new file types.
+    *NakshAstraMCP validates the library in a sandboxed subprocess and adds it to its grammars repository.*
+3.  **Associate Extensions**: Inform the indexer engine of extension mappings:
+    ```powershell
+    nakshastramcp start --config-lang ".go=go"
+    ```
 
 ---
 
-## ⚙️ Environment Variables
+## ⚙️ Process Environment Configurations
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `NAKSH_TRANSPORT` | `streamable-http` | Override transport mode (`stdio` or `streamable-http`) |
-| `NAKSH_MEM_THRESHOLD_MB` | `1024` | Memory guard threshold in MB |
-| `NAKSH_SNIPPET_LIMIT` | `10` | Max results per search query |
-| `NAKSH_LOG_LEVEL` | `INFO` | Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |
+Fine-tune internal settings using environment variables:
 
----
-
-## 🛡 Security & Privacy
-- **Local-Only**: Your code never leaves your machine.
-- **Secret Detection**: Automatically prevents indexing of API keys and sensitive strings.
-- **Access Control**: The server is locked to the workspace roots you've explicitly registered.
-- **Zero Telemetry**: No data collection. Fully local execution.
+| Environment Variable | Default | Description |
+| :--- | :--- | :--- |
+| `NAKSH_TRANSPORT` | `streamable-http` | Overrides server transport modes (`stdio` or `streamable-http`). |
+| `NAKSH_MEM_THRESHOLD_MB` | `1024` | Triggers Memory Guard cleanup if the process RAM footprint exceeds this value. |
+| `NAKSH_SNIPPET_LIMIT` | `10` | Limits maximum result records returned in search payloads. |
+| `NAKSH_LOG_LEVEL` | `INFO` | Adjusts diagnostic logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
 
 ---
 
 <p align="center">
   <a href="README.md">🏠 Home</a> | 
   <a href="SETUP.md">🚀 Setup Guide</a> | 
-  <a href="TROUBLESHOOTING.md">🛠 Troubleshooting</a>
+  <a href="TROUBLESHOOTING.md">🛠️ Troubleshooting</a>
 </p>
