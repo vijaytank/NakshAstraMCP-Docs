@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" markdown="1">
 
 <img src="assets/logo.png" alt="NakshAstraMCP - AI Code Context Engine Banner" width="100%">
 
