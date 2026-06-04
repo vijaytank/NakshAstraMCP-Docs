@@ -93,11 +93,11 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ### 2. Universal Wheel Installation
 NakshAstraMCP is distributed as a pre-compiled secure binary wheel for maximum performance:
 
-**📥 [Download v3.19.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.19.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl)**
 
 Install the wheel directly into your global environment:
 ```powershell
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl --force
 ```
 *Alternatively, using standard Python pip:*
 ```powershell
