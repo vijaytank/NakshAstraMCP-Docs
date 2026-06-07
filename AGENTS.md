@@ -1,4 +1,4 @@
-# NakshAstraMCP: Agent Instructions (v3.19.0)
+# NakshAstraMCP: Agent Instructions (v3.18.0)
 
 This repository is optimized for use with **NakshAstraMCP**. 
 **MANDATORY**: Always prioritize MCP tools over manual file-dumps or generic search.

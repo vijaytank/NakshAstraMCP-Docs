@@ -25,20 +25,20 @@ NakshAstraMCP is packaged and distributed as a **Secure Binary Wheel** to ensure
 ### Option A: Recommended Installation via `uv`
 We highly recommend using [uv](https://astral.sh/uv), the ultra-fast Python tool manager, to install and isolate NakshAstraMCP:
 
-**📥 [Download v3.19.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.20.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.20.0/nakshastramcp-3.20.0-cp313-cp313-win_amd64.whl)**
 
 ```powershell
 # 1. Install uv globally
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 # 2. Install the secure wheel
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.20.0/nakshastramcp-3.20.0-cp313-cp313-win_amd64.whl --force
 ```
 
 ### Option B: Installation via standard Python pip
 If you prefer a standard pip installation:
 ```powershell
-python -m pip install .\nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl
+python -m pip install .\nakshastramcp-3.20.0-cp313-cp313-win_amd64.whl
 ```
 
 ---
