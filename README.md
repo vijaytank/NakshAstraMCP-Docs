@@ -40,7 +40,7 @@ Explore detailed guides to onboard, optimize, and secure your development workfl
 *   **⚡ Search Latency**: **~0.68ms (p95)** on medium-to-large code repositories.
 *   **🧠 Semantic Alignment**: CPU-bound FlashRank reranker matches results based on programming intent.
 *   **🍃 Footprint**: Incredibly lightweight (runs under **< 150 MB idle RAM** with automatic garbage collection).
-*   **🌲 Language Support**: Deep out-of-the-box AST parsing for **Python, JavaScript, TypeScript (TSX), Java, and Kotlin**.
+*   **Tree-sitter Language Support**: Deep out-of-the-box AST parsing for **Python, JavaScript, TypeScript (TSX), Java, Kotlin, and Swift**.
 *   **📉 Token Savings**: Reduces LLM context payload sizes and costs by up to **75%**.
 
 ### 📊 Context Retrieval Metrics vs. Manual Analysis
