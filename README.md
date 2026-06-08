@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-Proprietary-EB5757.svg?style=for-the-badge&logoWidth=40)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-27AE60.svg?style=for-the-badge)](#)
 [![OS Support](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-2F80ED.svg?style=for-the-badge)](#)
-[![Release](https://img.shields.io/badge/Release-v3.19.0-8E44AD.svg?style=for-the-badge)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/tag/v3.19.0)
+[![Release](https://img.shields.io/badge/Release-v3.20.0-8E44AD.svg?style=for-the-badge)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/tag/v3.20.0)
 
 </div>
 
@@ -40,7 +40,7 @@ Explore detailed guides to onboard, optimize, and secure your development workfl
 *   **⚡ Search Latency**: **~0.68ms (p95)** on medium-to-large code repositories.
 *   **🧠 Semantic Alignment**: CPU-bound FlashRank reranker matches results based on programming intent.
 *   **🍃 Footprint**: Incredibly lightweight (runs under **< 150 MB idle RAM** with automatic garbage collection).
-*   **🌲 Language Support**: Deep out-of-the-box AST parsing for **Python, JavaScript, TypeScript (TSX), Java, and Kotlin**.
+*   **Tree-sitter Language Support**: Deep out-of-the-box AST parsing for **Python, JavaScript, TypeScript (TSX), Java, Kotlin, and Swift**.
 *   **📉 Token Savings**: Reduces LLM context payload sizes and costs by up to **75%**.
 
 ### 📊 Context Retrieval Metrics vs. Manual Analysis
@@ -93,15 +93,15 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ### 2. Universal Wheel Installation
 NakshAstraMCP is distributed as a pre-compiled secure binary wheel for maximum performance:
 
-**📥 [Download v3.19.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl)**
+**📥 [Download v3.20.0 Secure Wheel (Windows)](https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.20.0/nakshastramcp-3.20.0-cp313-cp313-win_amd64.whl)**
 
 Install the wheel directly into your global environment:
 ```powershell
-uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.19.0/nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl --force
+uv tool install https://github.com/vijaytank/NakshAstraMCP-Docs/releases/download/v3.20.0/nakshastramcp-3.20.0-cp313-cp313-win_amd64.whl --force
 ```
 *Alternatively, using standard Python pip:*
 ```powershell
-python -m pip install .\nakshastramcp-3.19.0-cp313-cp313-win_amd64.whl
+python -m pip install .\nakshastramcp-3.20.0-cp313-cp313-win_amd64.whl
 ```
 
 ### 3. Register & Index Workspace

@@ -2,7 +2,7 @@
 
 **Global Context for AI Coding Agents**  
 Repository Hub: [https://github.com/vijaytank/NakshAstraMCP-Docs](https://github.com/vijaytank/NakshAstraMCP-Docs)  
-Target Build Baseline: **v3.19.0**
+Target Build Baseline: **v3.20.0**
 
 ---
 

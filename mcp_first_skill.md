@@ -1,4 +1,4 @@
-# NakshAstraMCP-First Developer Rule Profile (v3.19.0)
+# NakshAstraMCP-First Developer Rule Profile (v3.20.0)
 
 You are configured to use **NakshAstraMCP** as your primary engineering intelligence engine.
 You MUST strictly follow these rules, priorities, and workflow protocols for all development, refactoring, and debugging tasks.

@@ -152,6 +152,7 @@ Manage server lifecycles, configuration, and environment cleanup directly via th
 | `nakshastramcp start --workspace <path>` | Start / Register | Initializes, indexes, and monitors a target code repository. |
 | `nakshastramcp stop` | Stop Server | Gracefully terminates active background server processes. |
 | `nakshastramcp restart` | Restart Server | Flushes active sessions and restarts background transports. |
+| `nakshastramcp deregister --workspace <path>` | Deregister Workspace | Safely stops server, removes workspace from registry, and cleans orphaned index data. |
 | `nakshastramcp status` | Diagnostic Status | View database indexes, workspace lists, and server health. |
 | `nakshastramcp doctor` | Environment Audit | Runs 12 comprehensive runtime checks to detect configuration issues. |
 | `nakshastramcp logs [--follow]` | Process Logs | Streams real-time error logs and performance statistics to terminal. |
@@ -163,7 +164,7 @@ Manage server lifecycles, configuration, and environment cleanup directly via th
 
 ## 🧩 Adding Custom Language Support (Addons)
 
-While core languages (Python, JavaScript, TypeScript, Java, and Kotlin) are natively supported, you can configure new language syntax grammars dynamically.
+While core languages (Python, JavaScript, TypeScript, Java, Kotlin, and Swift) are natively supported, you can configure new language syntax grammars dynamically.
 
 ### Step-by-Step Grammar Provisioning
 1.  **Obtain Binary Grammar**: Fetch or compile a Tree-sitter binary compiled grammar library (`.dll` on Windows, `.so` on Linux/macOS) for your target language (e.g. Go).

@@ -1,4 +1,10 @@
 {
-  "nodes": [],
+  "nodes": [
+    {
+      "id": "AGENTS.md",
+      "label": "AGENTS.md",
+      "type": "file"
+    }
+  ],
   "edges": []
 }
