@@ -5,7 +5,6 @@
 ## 🏆 High-Impact Files
 These files have the highest centrality (PageRank) and are critical to the system architecture.
 
-- [AGENTS.md](file:///E:/Projects/NakshAstraMCP-Docs/AGENTS.md) (Score: 1.0000)
 
 ## 🧬 High-Impact Symbols
 These class and function abstractions are the key logical hubs of the system.
@@ -13,10 +12,6 @@ These class and function abstractions are the key logical hubs of the system.
 
 ## 📦 Module Communities (Louvain)
 The following clusters represent tightly-coupled functional modules detected in the graph.
-
-### Module 1: AGENTS Cluster
-- **Size**: 1 nodes
-- **Key Files**: AGENTS.md
 
 
 ## ⚠️ Blast Radius Warnings

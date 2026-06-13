@@ -1,6 +1,12 @@
-title: NakshAstraMCP
-description: The ultimate high-performance code context engine for AI-native development.
+title: NakshAstraMCP — Local AI Code Context Engine
+description: >
+  NakshAstraMCP is a high-performance, privacy-first local MCP server that gives
+  AI coding assistants (Claude, Cursor, Windsurf, Antigravity) deep AST-accurate
+  code context with sub-millisecond search, PageRank scoring, and semantic reranking.
+  Supports Python, JavaScript, TypeScript, Java, Kotlin, Swift. 100% local execution.
 theme: jekyll-theme-cayman
-show_downloads: false
+show_downloads: true
 google_analytics:
-# Add more config as needed to make it look premium
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap

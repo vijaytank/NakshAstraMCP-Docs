@@ -1,50 +1,78 @@
-# NakshAstraMCP: Agent Instructions (v3.20.0)
+# NakshAstraMCP — Agent Instructions (v3.20.0)
 
-This repository is optimized for use with **NakshAstraMCP**. 
-**MANDATORY**: Always prioritize MCP tools over manual file-dumps or generic search.
+> This file is automatically provisioned in your workspace root by `nakshastramcp start --workspace .`.
+> It instructs AI coding assistants to use NakshAstraMCP tools efficiently and safely.
+
+**MANDATORY**: Always prioritize MCP tools over manual file-dumps or generic shell commands.
 
 ---
 
 ## 🛠️ MCP Capabilities (Ground Truth)
 
 | Tool | Priority | Usage Instruction |
-| :--- | :--- | :--- |
-| **`deep_context`** | **Primary** | Start here for all tasks. Locates files and adds their **immediate graph neighbors (1-hop)** for structural context. Strongly prefer over scattered `search_codebase` calls. |
-| **`search_codebase`**| **Discovery** | Broad "grep-style" keyword search when you lack a specific entry point. |
-| **`find_symbol`** | **Surgical** | Precise lookup for classes/functions by name. Use for "Go to Definition." |
-| **`read_file`** | **Verification**| **MANDATORY** before any edit. Surgically read the relevant target block range (using line limits) to avoid assumptions. |
-| **`find_references`**| **Audit** | Trace usages (Blast-radius) before changing custom functions. Avoid calling on common utilities / standard libraries to save tokens. |
-| **`generate_report`** | **Map** | Produce a macro-level architectural report of the workspace. |
-| **`server_status`** | **Diagnostic**| Use only if indexing or memory issues are suspected. |
+| :--- | :---: | :--- |
+| **`deep_context`** | 🥇 **Primary** | Start here for all tasks. Locates files and adds their **immediate graph neighbors (1-hop)** for structural context. Strongly prefer over scattered `search_codebase` calls. |
+| **`search_codebase`** | 🥈 **Discovery** | Broad "grep-style" keyword search when you lack a specific entry point. |
+| **`find_symbol`** | 🥉 **Surgical** | Precise lookup for classes/functions by name. Use for "Go to Definition." |
+| **`read_file`** | 📖 **Verification** | **MANDATORY** before any edit. Read the target block using `start_line`/`end_line` to avoid assumptions. Use `if_changed_since=<hash>` on re-reads to skip unchanged files (saves 100% tokens). |
+| **`find_references`** | 🔎 **Audit** | Trace call-sites (blast-radius) before changing custom functions. Avoid on standard library utilities to save tokens. |
+| **`generate_report`** | 🗺️ **Map** | Produce a macro-level architectural report of the workspace. |
+| **`server_status`** | 🩺 **Diagnostic** | Use only if indexing or memory issues are suspected. |
 
 ---
 
 ## 📂 Workspace Artifacts
 
-NakshAstraMCP generates architectural insights in the following directory:
-- **`nakshastra-out/`**: Contains synthesis reports and interactive graphs:
-  - `nakshastra-out/NAKSHASTRA_REPORT.md`: A comprehensive, macro-level architectural walkthrough of the repository, including key file clusters, PageRank matrices, and import dependencies.
-  - `nakshastra-out/graph.json`: The raw symbol relationship graph in JSON format, which can be visualized.
+NakshAstraMCP generates architectural insights in:
+
+```
+nakshastra-out/
+├── NAKSHASTRA_REPORT.md   ← Architectural walkthrough: PageRank hubs, Louvain clusters, blast-radius warnings
+└── graph.json             ← Raw symbol relationship graph (JSON), renderable in external diagram tools
+```
+
+**Always check `NAKSHASTRA_REPORT.md` first** for macro architectural context before starting complex tasks.
 
 ---
 
 ## 🔄 Standardized Workflow
 
-Follow this pattern for every non-trivial change:
+Follow this pattern for every non-trivial task:
 
-1. **`generate_report`**: (Optional) Check `nakshastra-out/NAKSHASTRA_REPORT.md` for macro-view.
-2. **`deep_context`**: Discover relevant files and architectural neighbors.
-3. **`find_symbol`**: Locate the exact definition (line ranges) for the target logic.
-4. **`read_file`**: **MUST** read the relevant target code block or line range (with enclosing context) before proposing edits.
-5. **`find_references`**: Audit call sites only on custom functions (avoid common libraries/utils) to prevent token waste.
+```
+1. generate_report   (Optional) → Read NAKSHASTRA_REPORT.md for macro context
+         │
+2. deep_context      → Discover relevant files + 1-hop architectural neighbors
+         │
+3. find_symbol       → Locate the exact definition (line range) for the target logic
+         │
+4. read_file         → Read the target code block (with enclosing context) BEFORE editing
+         │
+5. find_references   → Audit call sites of custom functions BEFORE making changes
+```
 
 ---
 
 ## 🛡️ Guardrails
 
-- **No Snippet Assumptions**: Snippets are for discovery only. Never assume a full definition from a snippet.
-- **Verification First**: Never edit code blocks you haven't read fully in their local context. Use line-range reads surgically to save tokens.
-- **Tool Efficiency**: Prefer `deep_context` for architectural discovery over scattered `search_codebase` calls.
-- **Log and Output Truncation**: When analyzing logs or test outputs, do not read complete log streams. Focus exclusively on relevant failure stack traces or tail lines to minimize token footprint.
-- **Security Protocols**: All paths are jailed. If a tool fails with a security error, verify the path is within a registered workspace.
-- **No Terminal/Shell MCP Execution**: Never attempt to run MCP tools (such as `generate_report` or `deep_context`) as command-line commands in the terminal (e.g., executing `nakshastramcp_generate_report`). MCP tools must be called strictly via the Model Context Protocol's tool-calling mechanism (using the `call_mcp_tool` wrapper or `mcp_nakshastramcp_...` native tools).
+> [!IMPORTANT]
+> Violating these rules causes inefficiency, bugs, and wasted tokens.
+
+| Rule | Detail |
+| :--- | :--- |
+| ❌ **No Snippet Assumptions** | Snippets are for discovery only. Never assume a full definition from a snippet — always use `read_file` with line ranges. |
+| ❌ **No Full File Dumps** | Never read an entire file into context if a specific line range meets the requirement. |
+| ❌ **No Terminal MCP Execution** | Never attempt to run MCP tools as shell commands (e.g., `nakshastramcp_generate_report`). Call them strictly via the MCP tool protocol. |
+| ✅ **Verification First** | Never edit code you haven't read in its local context via `read_file`. |
+| ✅ **Blast-Radius Audit** | Always run `find_references` on custom functions before modifying their signatures. |
+| ✅ **Tool Efficiency** | Prefer `deep_context` for multi-file discovery over scattered `search_codebase` calls. |
+| ✅ **Truncate Log Reads** | When analyzing logs, focus on relevant failure stack traces or tail lines only — never read entire log streams. |
+| ✅ **Security Protocols** | All paths are jailed. If a tool fails with a security error, verify the path is inside a registered workspace. |
+
+---
+
+<p align="center">
+  <a href="README.md">🏠 Home</a> ·
+  <a href="USER_GUIDE.md">📖 User Guide</a> ·
+  <a href="mcp_first_skill.md">🎯 MCP-First Skill Profile</a>
+</p>
